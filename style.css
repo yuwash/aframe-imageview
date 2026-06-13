@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+/* Three-dot menu at top right */
+#menu-overlay {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    text-align: right;
+}
+
+#menu-btn, #menu-dropdown {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+}
+
+#menu-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#menu-dropdown {
+    display: none;
+}
+
+#menu-dropdown.show {
+    display: block;
+}
+
+#menu-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 0.3rem;
+}
+
+#menu-dropdown button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Form overlay - not part of VR space */
+#form-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#form-overlay.hidden {
+    display: none;
+}
+
+#upload-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.3rem;
+    text-align: center;
+    max-width: 25rem;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+#upload-form h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#upload-form input[type="file"] {
+    margin-bottom: 1rem;
+}
+
+#preview-text {
+    margin-top: 1rem;
+    color: #666;
+}

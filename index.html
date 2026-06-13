@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Virtual Screen</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.7.1/dist/aframe-master.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Three-dot menu -->
+    <div id="menu-overlay">
+        <button id="menu-btn">⋮</button>
+        <div id="menu-dropdown">
+            <button id="change-image-btn">Change Image</button>
+        </div>
+    </div>
+
+    <!-- Upload form overlay -->
+    <div id="form-overlay">
+        <div id="upload-form">
+            <h2>Select an Image</h2>
+            <input type="file" id="image-input" accept="image/*">
+            <br>
+            <p id="preview-text">Choose a local image file</p>
+        </div>
+    </div>
+
+    <!-- A-Frame Scene -->
+    <a-scene vr-mode-ui="enabled: true">
+        <!-- Sky (black background) -->
+        <a-sky color="#000000"></a-sky>
+
+        <!-- Camera -->
+        <a-entity id="camera-rig" position="0 0 -2">
+            <a-camera look-controls="pointerLockEnabled: false"></a-camera>
+        </a-entity>
+
+        <!-- Virtual Screen (green rectangle) -->
+        <a-plane id="virtual-screen"
+                 color="#006400"
+                 width="16"
+                 height="9"
+                 position="0 0 -5"
+                 rotation="0 0 0">
+        </a-plane>
+
+        <!-- Image container (empty initially) -->
+        <a-image id="uploaded-image"
+                 visible="false"
+                 position="0 0 -5">
+        </a-image>
+    </a-scene>
+
+    <script src="app.js"></script>
+</body>
+</html>

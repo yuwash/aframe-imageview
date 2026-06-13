@@ -38,8 +38,8 @@ document.addEventListener('click', (e) => {
 
 // Change image button
 changeImageBtn.addEventListener('click', () => {
-    formOverlay.classList.remove('hidden');
-    cameraDistanceOverlay.classList.add('hidden');
+    formOverlay.classList.add('is-active');
+    cameraDistanceOverlay.classList.remove('is-active');
     menuDropdown.classList.remove('show');
     imageInput.value = '';
     previewText.textContent = 'Choose a local image file';
@@ -47,8 +47,8 @@ changeImageBtn.addEventListener('click', () => {
 
 // Camera distance button
 cameraDistanceBtn.addEventListener('click', () => {
-    cameraDistanceOverlay.classList.remove('hidden');
-    formOverlay.classList.add('hidden');
+    cameraDistanceOverlay.classList.add('is-active');
+    formOverlay.classList.remove('is-active');
     menuDropdown.classList.remove('show');
 });
 
@@ -61,9 +61,9 @@ cameraDistanceSlider.addEventListener('input', () => {
 
 // Close form overlay when clicking outside of it
 formOverlay.addEventListener('click', (e) => {
-    // Check if the click target is the modal-background or the close button
-    if (e.target.classList.contains('modal-background') || e.target.classList.contains('modal-close')) {
-        formOverlay.classList.add('hidden');
+    // Check if the click target is the modal-background
+    if (e.target.classList.contains('modal-background')) {
+        formOverlay.classList.remove('is-active');
         // Optionally clear the input and reset preview text if needed
         imageInput.value = '';
         previewText.textContent = 'Choose a local image file';
@@ -72,9 +72,9 @@ formOverlay.addEventListener('click', (e) => {
 
 // Close camera distance overlay when clicking outside of it
 cameraDistanceOverlay.addEventListener('click', (e) => {
-    // Check if the click target is the modal-background or the close button
-    if (e.target.classList.contains('modal-background') || e.target.classList.contains('modal-close')) {
-        cameraDistanceOverlay.classList.add('hidden');
+    // Check if the click target is the modal-background
+    if (e.target.classList.contains('modal-background')) {
+        cameraDistanceOverlay.classList.remove('is-active');
     }
 });
 
@@ -135,7 +135,7 @@ function loadImageToScene(image) {
     uploadedImage.setAttribute('src', currentImageURL);
 
     // Hide form overlay
-    formOverlay.classList.add('hidden');
+    formOverlay.classList.remove('is-active');
 
     // Keep aspect ratio stored for reference
     currentImageAspect = imageAspect;
@@ -157,8 +157,8 @@ function resetScene() {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'r' || e.key === 'R') {
         resetScene();
-        formOverlay.classList.remove('hidden');
-        cameraDistanceOverlay.classList.add('hidden');
+        formOverlay.classList.add('is-active');
+        cameraDistanceOverlay.classList.remove('is-active');
     }
 });
 

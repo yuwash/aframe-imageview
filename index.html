@@ -6,6 +6,26 @@
     <title>VR Virtual Screen</title>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.7.1/dist/aframe-master.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <style>
+        #menu-overlay {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        #menu-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 4px;
+        }
+        #menu-dropdown.show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <!-- Three-dot menu -->
@@ -37,18 +57,16 @@
                 </label>
             </div>
         </div>
-        <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <!-- Camera distance overlay -->
-    <div id="camera-distance-overlay" class="modal hidden">
+    <div id="camera-distance-overlay" class="modal">
         <div class="modal-background"></div>
         <div id="camera-distance-form" class="modal-content box">
             <h2 class="title is-4 mb-4">Camera Distance</h2>
             <input class="slider is-fullwidth" id="camera-distance-slider" type="range" min="1" max="10" step="0.1" value="5">
             <p class="has-text-centered" id="camera-distance-value">5</p>
         </div>
-        <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <!-- A-Frame Scene -->

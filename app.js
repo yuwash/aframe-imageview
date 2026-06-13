@@ -122,5 +122,16 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Close form overlay when clicking outside of it
+formOverlay.addEventListener('click', (e) => {
+    // Check if the click target is the formOverlay itself (and not its children)
+    if (e.target === formOverlay) {
+        formOverlay.classList.add('hidden');
+        // Optionally clear the input and reset preview text if needed
+        imageInput.value = '';
+        previewText.textContent = 'Choose a local image file';
+    }
+});
+
 console.log('Virtual Screen VR App initialized');
 console.log('Initial screen dimensions:', INITIAL_SCREEN);

@@ -9,6 +9,11 @@ body {
     overflow: hidden;
 }
 
+/* Bulletproof utility class for hiding elements */
+.hidden {
+    display: none !important;
+}
+
 /* Three-dot menu at top right */
 #menu-overlay {
     position: fixed;
@@ -52,7 +57,7 @@ body {
 }
 
 /* Form overlay - not part of VR space */
-#form-overlay {
+#form-overlay, #camera-distance-overlay {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,11 +70,7 @@ body {
     background: rgba(0, 0, 0, 0.5);
 }
 
-#form-overlay.hidden {
-    display: none;
-}
-
-#upload-form {
+#upload-form, #camera-distance-form {
     background: white;
     padding: 2rem;
     border-radius: 0.3rem;
@@ -78,16 +79,20 @@ body {
     box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3);
 }
 
-#upload-form h2 {
+#upload-form h2, #camera-distance-form h2 {
     margin-bottom: 1rem;
     color: #333;
 }
 
-#upload-form input[type="file"] {
+#upload-form input[type="file"], #camera-distance-form input[type="range"] {
     margin-bottom: 1rem;
 }
 
-#preview-text {
+#preview-text, #camera-distance-value {
     margin-top: 1rem;
     color: #666;
+}
+
+#camera-distance-form input[type="range"] {
+    width: 100%;
 }

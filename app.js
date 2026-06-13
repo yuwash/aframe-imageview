@@ -9,11 +9,16 @@ const INITIAL_SCREEN = {
 const virtualScreen = document.getElementById('virtual-screen');
 const uploadedImage = document.getElementById('uploaded-image');
 const formOverlay = document.getElementById('form-overlay');
+const cameraDistanceOverlay = document.getElementById('camera-distance-overlay');
 const imageInput = document.getElementById('image-input');
+const cameraDistanceSlider = document.getElementById('camera-distance-slider');
+const cameraDistanceValue = document.getElementById('camera-distance-value');
 const previewText = document.getElementById('preview-text');
 const menuBtn = document.getElementById('menu-btn');
 const menuDropdown = document.getElementById('menu-dropdown');
 const changeImageBtn = document.getElementById('change-image-btn');
+const cameraDistanceBtn = document.getElementById('camera-distance-btn');
+const cameraRig = document.getElementById('camera-rig');
 
 // Current image aspect ratio
 let currentImageAspect = null;
@@ -34,9 +39,43 @@ document.addEventListener('click', (e) => {
 // Change image button
 changeImageBtn.addEventListener('click', () => {
     formOverlay.classList.remove('hidden');
+    cameraDistanceOverlay.classList.add('hidden');
     menuDropdown.classList.remove('show');
     imageInput.value = '';
     previewText.textContent = 'Choose a local image file';
+});
+
+// Camera distance button
+cameraDistanceBtn.addEventListener('click', () => {
+    cameraDistanceOverlay.classList.remove('hidden');
+    formOverlay.classList.add('hidden');
+    menuDropdown.classList.remove('show');
+});
+
+// Camera distance slider
+cameraDistanceSlider.addEventListener('input', () => {
+    const value = cameraDistanceSlider.value;
+    cameraDistanceValue.textContent = value;
+    cameraRig.setAttribute('position', `0 0 ${value}`);
+});
+
+// Close form overlay when clicking outside of it
+formOverlay.addEventListener('click', (e) => {
+    // Check if the click target is the formOverlay itself (and not its children)
+    if (e.target === formOverlay) {
+        formOverlay.classList.add('hidden');
+        // Optionally clear the input and reset preview text if needed
+        imageInput.value = '';
+        previewText.textContent = 'Choose a local image file';
+    }
+});
+
+// Close camera distance overlay when clicking outside of it
+cameraDistanceOverlay.addEventListener('click', (e) => {
+    // Check if the click target is the cameraDistanceOverlay itself (and not its children)
+    if (e.target === cameraDistanceOverlay) {
+        cameraDistanceOverlay.classList.add('hidden');
+    }
 });
 
 // Image preview update and automatic upload
@@ -119,17 +158,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'r' || e.key === 'R') {
         resetScene();
         formOverlay.classList.remove('hidden');
-    }
-});
-
-// Close form overlay when clicking outside of it
-formOverlay.addEventListener('click', (e) => {
-    // Check if the click target is the formOverlay itself (and not its children)
-    if (e.target === formOverlay) {
-        formOverlay.classList.add('hidden');
-        // Optionally clear the input and reset preview text if needed
-        imageInput.value = '';
-        previewText.textContent = 'Choose a local image file';
+        cameraDistanceOverlay.classList.add('hidden');
     }
 });
 

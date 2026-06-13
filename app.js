@@ -61,8 +61,8 @@ cameraDistanceSlider.addEventListener('input', () => {
 
 // Close form overlay when clicking outside of it
 formOverlay.addEventListener('click', (e) => {
-    // Check if the click target is the formOverlay itself (and not its children)
-    if (e.target === formOverlay) {
+    // Check if the click target is the modal-background or the close button
+    if (e.target.classList.contains('modal-background') || e.target.classList.contains('modal-close')) {
         formOverlay.classList.add('hidden');
         // Optionally clear the input and reset preview text if needed
         imageInput.value = '';
@@ -72,8 +72,8 @@ formOverlay.addEventListener('click', (e) => {
 
 // Close camera distance overlay when clicking outside of it
 cameraDistanceOverlay.addEventListener('click', (e) => {
-    // Check if the click target is the cameraDistanceOverlay itself (and not its children)
-    if (e.target === cameraDistanceOverlay) {
+    // Check if the click target is the modal-background or the close button
+    if (e.target.classList.contains('modal-background') || e.target.classList.contains('modal-close')) {
         cameraDistanceOverlay.classList.add('hidden');
     }
 });

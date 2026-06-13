@@ -1,6 +1,4 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -80,16 +78,10 @@ body {
 }
 
 #upload-form h2, #camera-distance-form h2 {
-    margin-bottom: 1rem;
     color: #333;
 }
 
-#upload-form input[type="file"], #camera-distance-form input[type="range"] {
-    margin-bottom: 1rem;
-}
-
 #preview-text, #camera-distance-value {
-    margin-top: 1rem;
     color: #666;
 }
 
